@@ -1,0 +1,2466 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hương Vị Nhà</title>
+
+<style>
+/* =========================================================
+   1. RESET + BIẾN MÀU
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --green-dark: #123f2c;
+    --green: #28704e;
+    --green-light: #eef5e8;
+    --cream: #f8efdc;
+    --text: #244534;
+    --muted: #78827b;
+    --white: #ffffff;
+    --border: #e2e7df;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--text);
+    background: #fafbf8;
+    overflow-x: hidden;
+}
+
+button,
+input,
+textarea {
+    font-family: Arial, sans-serif;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.container {
+    width: 100%;
+    max-width: 1260px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(16px, 4vw, 40px);
+    padding-right: clamp(16px, 4vw, 40px);
+}
+
+
+/* =========================================================
+   2. HEADER
+========================================================= */
+
+header {
+    min-height: 86px;
+    height: auto;
+    background: #fbfcf8;
+    border-bottom: 1px solid #edf0ea;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px clamp(16px, 3vw, 30px);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: clamp(20px, 3vw, 25px);
+    font-weight: bold;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+
+    border-radius: 50%;
+    background: var(--green);
+
+    color: #dcecb7;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+nav {
+    display: flex;
+    gap: clamp(18px, 3vw, 42px);
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+nav a {
+    position: relative;
+    padding: 16px 0;
+}
+
+nav a.active {
+    color: var(--green);
+    font-weight: bold;
+}
+
+nav a.active::after {
+    content: "";
+
+    position: absolute;
+    width: 24px;
+    height: 2px;
+
+    background: var(--green);
+
+    bottom: 6px;
+    left: 50%;
+
+    transform: translateX(-50%);
+}
+
+.header-search {
+    width: 100%;
+    max-width: 220px;
+    min-height: 40px;
+    height: 40px;
+    flex-shrink: 1;
+    min-width: 130px;
+
+    border: 1px solid #dfe4dc;
+    border-radius: 30px;
+
+    background: white;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 15px;
+    gap: 8px;
+
+    color: #7d867f;
+
+    font-family: Arial, sans-serif;
+}
+
+.header-search input {
+    border: none;
+    outline: none;
+
+    width: 100%;
+    min-width: 0;
+
+    background: transparent;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   3. TRANG CHỦ - HERO
+========================================================= */
+
+.hero {
+    background: var(--green-light);
+    padding: clamp(35px, 6vw, 75px) 0;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: clamp(24px, 5vw, 60px);
+    align-items: center;
+}
+
+.hero-small {
+    color: var(--green);
+
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 10px;
+}
+
+.hero h1 {
+    font-size: clamp(28px, 4.5vw, 52px);
+    line-height: 1.15;
+    word-break: break-word;
+
+    font-weight: 500;
+
+    margin-bottom: 17px;
+}
+
+.hero-description {
+    color: #707b74;
+
+    font-family: Arial, sans-serif;
+
+    font-size: clamp(12px, 1.5vw, 13px);
+    line-height: 1.7;
+
+    width: 100%;
+    max-width: 520px;
+
+    margin-bottom: 25px;
+}
+
+.hero-search {
+    width: 100%;
+    max-width: 520px;
+
+    min-height: 45px;
+    height: auto;
+
+    background: white;
+
+    border: 1px solid #dfe6dc;
+
+    border-radius: 30px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 4px 5px 4px 16px;
+}
+
+.hero-search span {
+    color: #859087;
+    flex-shrink: 0;
+}
+
+.hero-search input {
+    flex: 1;
+    min-width: 0;
+
+    border: none;
+    outline: none;
+
+    padding: 0 10px;
+
+    font-size: 13px;
+}
+
+.hero-search button {
+    border: none;
+
+    background: var(--green);
+
+    color: white;
+
+    padding: 10px clamp(14px, 2.5vw, 20px);
+    white-space: nowrap;
+    flex-shrink: 0;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+}
+
+.hero-image {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    max-height: 380px;
+    min-height: 200px;
+
+    border-radius: 17px;
+
+    overflow: hidden;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   4. SECTION DANH MỤC
+========================================================= */
+
+.category-section {
+    padding: clamp(35px, 5vw, 65px) 0;
+}
+
+.section-label {
+    color: var(--green);
+
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+
+    font-size: 10px;
+
+    margin-bottom: 7px;
+}
+
+.section-title {
+    font-size: clamp(22px, 3.5vw, 30px);
+
+    font-weight: 500;
+
+    margin-bottom: clamp(16px, 2.5vw, 25px);
+}
+
+.category-list {
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: clamp(10px, 1.5vw, 15px);
+}
+
+.category-card {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    min-height: 110px;
+    max-height: 160px;
+
+    position: relative;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+}
+
+.category-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition: .3s;
+}
+
+.category-card:hover img {
+    transform: scale(1.06);
+}
+
+.category-card::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: linear-gradient(
+        transparent 20%,
+        rgba(0,0,0,.72)
+    );
+}
+
+.category-info {
+    position: absolute;
+
+    z-index: 2;
+
+    left: 13px;
+    right: 11px;
+    bottom: 10px;
+
+    color: white;
+    word-break: break-word;
+}
+
+.category-info h3 {
+    font-size: clamp(11px, 1.2vw, 13px);
+
+    font-weight: 500;
+
+    margin-bottom: 2px;
+}
+
+.category-info span {
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   5. ABOUT
+========================================================= */
+
+.about {
+    background: var(--cream);
+
+    padding: clamp(35px, 5vw, 58px) 0;
+}
+
+.about-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: clamp(24px, 5vw, 60px);
+
+    align-items: center;
+}
+
+.about-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-height: 320px;
+    min-height: 180px;
+
+    overflow: hidden;
+
+    border-radius: 8px;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about h2 {
+    font-size: clamp(22px, 3.5vw, 30px);
+
+    line-height: 1.25;
+    word-break: break-word;
+
+    font-weight: 500;
+
+    margin: 8px 0 18px;
+}
+
+.about ul {
+    list-style: none;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    color: #69766e;
+}
+
+.about li {
+    margin: 9px 0;
+
+    padding-left: 17px;
+
+    position: relative;
+    word-break: break-word;
+}
+
+.about li::before {
+    content: "•";
+
+    position: absolute;
+
+    left: 0;
+
+    color: #7da95e;
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   6. FOOTER
+========================================================= */
+
+footer {
+    background: var(--green-dark);
+
+    color: white;
+
+    padding: 30px 0 clamp(40px, 8vw, 90px);
+
+    margin-top: clamp(40px, 6vw, 70px);
+}
+
+.footer-content {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    gap: 20px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+}
+
+footer .logo {
+    font-size: 20px;
+}
+
+footer .logo-icon {
+    background: #b8d962;
+    color: #174b34;
+}
+
+
+/* =========================================================
+   7. TRANG DANH MỤC
+========================================================= */
+
+.page-heading {
+    background: var(--green-light);
+
+    padding: clamp(25px, 4vw, 35px) 0 clamp(30px, 5vw, 52px);
+}
+
+.breadcrumb {
+    color: #52775f;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    margin-bottom: 16px;
+}
+
+.page-heading h1 {
+    font-size: clamp(24px, 4.5vw, 38px);
+
+    font-weight: 500;
+
+    line-height: 1.15;
+    word-break: break-word;
+
+    width: 100%;
+    max-width: 1000px;
+}
+
+.recipe-grid {
+    padding: clamp(35px, 5vw, 70px) 0 clamp(50px, 8vw, 140px);
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: clamp(16px, 2.5vw, 24px);
+}
+
+.recipe-card {
+    background: white;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow: 0 7px 25px rgba(30,60,45,.08);
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    transition: .25s;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+}
+
+.recipe-image {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    max-height: 240px;
+    min-height: 160px;
+    overflow: hidden;
+}
+
+.recipe-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.recipe-content {
+    padding: 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.recipe-content h3 {
+    font-size: clamp(16px, 2vw, 18px);
+
+    font-weight: 500;
+
+    margin-bottom: 4px;
+    word-break: break-word;
+}
+
+.recipe-content span {
+    color: var(--green);
+
+    font-family: Arial, sans-serif;
+
+    font-weight: bold;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   8. TRANG CHI TIẾT
+========================================================= */
+
+.detail-header {
+    padding: clamp(25px, 4vw, 45px) 0 clamp(25px, 4vw, 50px);
+
+    background: #fbfcf8;
+}
+
+.detail-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1.75fr;
+
+    gap: clamp(20px, 3.5vw, 38px);
+}
+
+.detail-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    max-height: 380px;
+    min-height: 200px;
+
+    overflow: hidden;
+
+    border-radius: 16px;
+}
+
+.detail-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.detail-title {
+    font-size: clamp(24px, 4vw, 39px);
+
+    line-height: 1.15;
+    word-break: break-word;
+
+    font-weight: 500;
+
+    text-transform: uppercase;
+
+    margin: 8px 0;
+}
+
+.comment-count {
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    color: #7c857f;
+
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.recipe-meta {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+
+    border-bottom: 1px solid var(--border);
+
+    padding: 15px 0;
+}
+
+.recipe-meta strong {
+    display: block;
+
+    color: #3b7757;
+
+    font-size: clamp(18px, 3.5vw, 28px);
+
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.recipe-meta span {
+    color: #7a837d;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+}
+
+.share-btn {
+    border: none;
+
+    background: var(--green);
+
+    color: white;
+
+    padding: 11px clamp(16px, 3vw, 27px);
+
+    margin-top: 18px;
+
+    font-weight: bold;
+
+    font-size: 11px;
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   9. NGUYÊN LIỆU + CÁC BƯỚC
+========================================================= */
+
+.recipe-body {
+    background: white;
+
+    padding: clamp(25px, 4vw, 35px) 0;
+}
+
+.recipe-columns {
+    display: grid;
+
+    grid-template-columns: 1fr 1.3fr;
+
+    gap: clamp(25px, 5vw, 60px);
+}
+
+.recipe-columns h2 {
+    font-size: clamp(22px, 3vw, 28px);
+
+    font-weight: 500;
+
+    margin-bottom: 18px;
+    word-break: break-word;
+}
+
+.ingredients {
+    list-style: none;
+}
+
+.ingredients li {
+    position: relative;
+
+    border-bottom: 1px solid #e6eae4;
+
+    padding: 11px 0 11px 14px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+    word-break: break-word;
+}
+
+.ingredients li::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 17px;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #b5d75c;
+}
+
+.tip {
+    margin-top: 20px;
+
+    background: #edf5e6;
+
+    border-radius: 10px;
+
+    padding: 13px 15px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    color: #68756d;
+    word-break: break-word;
+}
+
+.tip strong {
+    display: block;
+
+    color: #477254;
+
+    margin-bottom: 5px;
+}
+
+.step {
+    display: grid;
+
+    grid-template-columns: 28px 1fr;
+
+    gap: 10px;
+
+    margin-bottom: 15px;
+}
+
+.step-number {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #37805c;
+
+    color: white;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+.step h3 {
+    font-size: 17px;
+
+    font-weight: 500;
+
+    margin-bottom: 4px;
+    word-break: break-word;
+}
+
+.step p {
+    font-family: Arial, sans-serif;
+
+    color: #758078;
+
+    font-size: 10px;
+
+    line-height: 1.7;
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   10. COMMENT
+========================================================= */
+
+.comments {
+    background: #fafbf7;
+
+    padding: clamp(25px, 4vw, 35px) 0 clamp(35px, 5vw, 50px);
+}
+
+.comments-grid {
+    display: grid;
+
+    grid-template-columns: 1.65fr 1fr;
+
+    gap: clamp(30px, 4vw, 55px);
+}
+
+.comments h2 {
+    font-size: clamp(22px, 3vw, 28px);
+
+    font-weight: 500;
+
+    margin-bottom: 15px;
+    word-break: break-word;
+}
+
+.comment {
+    display: grid;
+
+    grid-template-columns: 34px 1fr auto;
+
+    gap: 10px;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid #e5e9e2;
+}
+
+.avatar {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #edf4e7;
+
+    color: #4e8062;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+
+    font-weight: bold;
+
+    font-size: 10px;
+}
+
+.comment strong {
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+}
+
+.comment p {
+    font-family: Arial, sans-serif;
+
+    color: #69756e;
+
+    font-size: 11px;
+
+    margin-top: 3px;
+    word-break: break-word;
+}
+
+.comment time {
+    font-family: Arial, sans-serif;
+
+    color: #8a928d;
+
+    font-size: 9px;
+    white-space: nowrap;
+}
+
+.more-comment {
+    border: none;
+
+    background: #edf5e5;
+
+    color: #477459;
+
+    border-radius: 20px;
+
+    padding: 9px 15px;
+
+    margin-top: 15px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   11. FORM BÌNH LUẬN
+========================================================= */
+
+.comment-form {
+    background: white;
+
+    border: 1px solid #e3e7df;
+
+    border-radius: 16px;
+
+    padding: clamp(16px, 3vw, 22px);
+
+    box-shadow: 0 8px 25px rgba(20,50,35,.07);
+
+    width: 100%;
+    max-width: 100%;
+}
+
+.comment-form h3 {
+    font-size: clamp(20px, 3vw, 24px);
+
+    font-weight: 500;
+
+    margin-bottom: 8px;
+    word-break: break-word;
+}
+
+.comment-form p {
+    color: #7a837d;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    margin-bottom: 15px;
+    word-break: break-word;
+}
+
+.comment-form label {
+    display: block;
+
+    font-family: Arial, sans-serif;
+
+    font-weight: bold;
+
+    font-size: 10px;
+
+    margin: 11px 0 6px;
+}
+
+.comment-form input,
+.comment-form textarea {
+    width: 100%;
+    max-width: 100%;
+
+    border: 1px solid #dfe4dd;
+
+    border-radius: 5px;
+
+    padding: 10px;
+
+    outline: none;
+
+    font-size: 11px;
+}
+
+.comment-form textarea {
+    min-height: 90px;
+    height: 100px;
+
+    resize: vertical;
+}
+
+.comment-form button {
+    border: none;
+
+    background: #39805c;
+
+    color: white;
+
+    border-radius: 20px;
+
+    padding: 10px 18px;
+
+    margin-top: 13px;
+
+    font-size: 10px;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   12. RESPONSIVE MEDIA QUERIES
+========================================================= */
+
+/* Tablet ngang & Laptop nhỏ */
+@media (max-width: 1024px) {
+
+    .category-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .recipe-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .detail-grid {
+        grid-template-columns: 1fr 1.3fr;
+        gap: 28px;
+    }
+
+    .comments-grid {
+        grid-template-columns: 1.3fr 1fr;
+        gap: 35px;
+    }
+}
+
+/* Tablet dọc & Thiết bị vừa */
+@media (max-width: 850px) {
+
+    header {
+        min-height: 70px;
+    }
+
+    .navbar {
+        gap: 12px 20px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .header-search {
+        max-width: 170px;
+        min-width: 120px;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .recipe-columns {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .comments-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+}
+
+/* Điện thoại di động */
+@media (max-width: 640px) {
+
+    header {
+        min-height: auto;
+        padding: 12px 0;
+    }
+
+    .navbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px 15px;
+    }
+
+    .logo {
+        font-size: 19px;
+    }
+
+    nav {
+        order: 3;
+        width: 100%;
+        display: flex;
+        gap: 24px;
+        padding-top: 8px;
+        border-top: 1px solid #edf0ea;
+    }
+
+    nav a {
+        padding: 6px 0;
+    }
+
+    nav a.active::after {
+        bottom: 0;
+    }
+
+    .header-search {
+        max-width: 150px;
+        min-width: 110px;
+        min-height: 36px;
+        height: 36px;
+        padding: 0 10px;
+    }
+
+    .category-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .category-card:last-child {
+        grid-column: span 2;
+    }
+
+    .recipe-grid {
+        grid-template-columns: 1fr;
+        padding: 35px 0 70px;
+    }
+
+    .comment {
+        grid-template-columns: 34px 1fr;
+        gap: 10px;
+    }
+
+    .comment time {
+        grid-column: 2 / -1;
+    }
+}
+
+/* Điện thoại màn hình rất nhỏ (dưới 380px) */
+@media (max-width: 380px) {
+
+    .navbar {
+        gap: 8px;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+
+    .header-search {
+        max-width: 120px;
+    }
+
+    .category-list {
+        grid-template-columns: 1fr;
+    }
+
+    .category-card:last-child {
+        grid-column: span 1;
+    }
+
+    .recipe-meta {
+        gap: 6px;
+    }
+
+    .recipe-meta strong {
+        font-size: 16px;
+    }
+
+    .hero-search button {
+        padding: 8px 12px;
+        font-size: 11px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+<div class="container navbar">
+
+    <a href="#home" class="logo">
+        <span class="logo-icon">⌁</span>
+        Hương Vị Nhà
+    </a>
+
+
+    <nav>
+
+        <a href="#home" id="navHome">
+            Trang chủ
+        </a>
+
+        <a href="#category" id="navCategory">
+            Danh mục
+        </a>
+
+    </nav>
+
+
+    <div class="header-search">
+
+        <span>⌕</span>
+
+        <input
+            id="headerSearch"
+            type="text"
+            placeholder="Tìm kiếm"
+        >
+
+    </div>
+
+</div>
+
+</header>
+
+
+
+<!-- =====================================================
+     APP
+===================================================== -->
+
+<main id="app"></main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+<div class="container footer-content">
+
+    <div class="logo">
+
+        <span class="logo-icon">
+            ⌁
+        </span>
+
+        Hương Vị Nhà
+
+    </div>
+
+
+    <div>
+        Mang phong vị bốn phương về gian bếp nhà
+    </div>
+
+
+    <div>
+        © 2026 Hương Vị Nhà.
+        Được tạo ra với trọn tâm huyết.
+    </div>
+
+</div>
+
+</footer>
+
+
+
+<script>
+
+/* =========================================================
+   DATABASE GIẢ
+========================================================= */
+
+const recipes = [
+
+    {
+        id: "dau-nhoi",
+
+        title: "Đậu nhồi thịt sốt cà chua",
+
+        image:
+        "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=85",
+
+        time: "35 phút",
+
+        people: "4 người"
+    },
+
+
+    {
+        id: "suon-xao",
+
+        title: "Sườn non xào chua ngọt",
+
+        image:
+        "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1000&q=85",
+
+        time: "40 phút",
+
+        people: "4 người"
+    },
+
+
+    {
+        id: "thit-kho",
+
+        title: "Thịt ba chỉ kho quẹt rau luộc",
+
+        image:
+        "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=85",
+
+        time: "45 phút",
+
+        people: "4 người"
+    },
+
+
+    {
+        id: "bo-bong",
+
+        title: "Bò xào bông thiên lý",
+
+        image:
+        "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=85",
+
+        time: "30 phút",
+
+        people: "3 người"
+    },
+
+
+    {
+        id: "ca-bong",
+
+        title: "Cá bống kho tiêu",
+
+        image:
+        "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=85",
+
+        time: "45 phút",
+
+        people: "4 người"
+    }
+
+];
+
+
+const categories = [
+
+    {
+        name: "Món cơm gia đình",
+        count: "5 công thức",
+
+        image:
+        "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80"
+    },
+
+
+    {
+        name: "Món canh & súp",
+        count: "4 công thức",
+
+        image:
+        "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=600&q=80"
+    },
+
+
+    {
+        name: "Món gỏi & cuốn",
+        count: "4 công thức",
+
+        image:
+        "https://images.unsplash.com/photo-1559314809-0d155014e29e?auto=format&fit=crop&w=600&q=80"
+    },
+
+
+    {
+        name: "Món nướng & lẩu",
+        count: "4 công thức",
+
+        image:
+        "https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=600&q=80"
+    },
+
+
+    {
+        name: "Món chay & tráng miệng",
+        count: "4 công thức",
+
+        image:
+        "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=600&q=80"
+    }
+
+];
+
+
+
+/* =========================================================
+   TRANG HOME
+========================================================= */
+
+function renderHome() {
+
+    document.getElementById("app").innerHTML = `
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="container hero-grid">
+
+                <div>
+
+                    <div class="hero-small">
+                        Hôm nay ăn gì?
+                    </div>
+
+
+                    <h1>
+                        Hôm nay ăn gì?
+                    </h1>
+
+
+                    <p class="hero-description">
+
+                        Gợi ý cho bạn những công thức chuẩn vị,
+                        nguyên liệu tươi ngon theo mùa cùng bí quyết
+                        nấu nướng đơn giản để mỗi món ăn luôn đầy đủ
+                        dinh dưỡng và trọn vẹn.
+
+                    </p>
+
+
+                    <div class="hero-search">
+
+                        <span>⌕</span>
+
+                        <input
+                            id="heroSearch"
+                            placeholder="Tìm kiếm công thức, nguyên liệu"
+                        >
+
+                        <button onclick="searchRecipe()">
+                            Tìm kiếm
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=90"
+                        alt="Món ăn gia đình"
+                    >
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- CATEGORY -->
+
+        <section class="category-section">
+
+            <div class="container">
+
+                <div class="section-label">
+                    DANH MỤC
+                </div>
+
+                <h2 class="section-title">
+                    Tìm món theo danh mục
+                </h2>
+
+
+                <div class="category-list">
+
+                    ${categories.map(category => `
+
+                        <a
+                            href="#category"
+                            class="category-card"
+                        >
+
+                            <img
+                                src="${category.image}"
+                                alt="${category.name}"
+                            >
+
+
+                            <div class="category-info">
+
+                                <h3>
+                                    ${category.name}
+                                </h3>
+
+                                <span>
+                                    ${category.count}
+                                </span>
+
+                            </div>
+
+                        </a>
+
+                    `).join("")}
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ABOUT -->
+
+        <section class="about">
+
+            <div class="container about-grid">
+
+
+                <div class="about-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1000&q=85"
+                        alt="Nấu ăn tại nhà"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <div class="section-label">
+                        VỀ CHÚNG TÔI
+                    </div>
+
+
+                    <h2>
+                        Hương Vị Nhà –
+                        “Mang phong vị bốn phương
+                        về gian bếp nhà”
+                    </h2>
+
+
+                    <ul>
+
+                        <li>
+                            Chúng tôi cung cấp các công thức chế biến
+                            món ăn Việt Nam và quốc tế chuẩn vị,
+                            chuẩn dinh dưỡng.
+                        </li>
+
+                        <li>
+                            Hỗ trợ thực đơn hằng ngày cho sinh viên,
+                            người nội trợ, người đi làm bận rộn.
+                        </li>
+
+                        <li>
+                            Tạo nên từng công thức với sự gần gũi
+                            và tinh thần gia đình.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    `;
+
+    updateNavigation("home");
+}
+
+
+
+/* =========================================================
+   TRANG CATEGORY
+========================================================= */
+
+function renderCategory(search = "") {
+
+    let filteredRecipes = recipes;
+
+    if (search) {
+
+        filteredRecipes = recipes.filter(recipe =>
+
+            recipe.title
+                .toLowerCase()
+                .includes(search.toLowerCase())
+
+        );
+
+    }
+
+
+    document.getElementById("app").innerHTML = `
+
+        <section class="page-heading">
+
+            <div class="container">
+
+                <div class="breadcrumb">
+
+                    Trang chủ
+                    →
+                    Danh mục
+                    →
+                    Món cơm gia đình
+
+                </div>
+
+
+                <h1>
+
+                    Khám phá ngay tất cả những
+                    món cơm gia đình đơn giản
+                    và dễ chế biến ngay tại nhà
+
+                </h1>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="container recipe-grid">
+
+            ${
+                filteredRecipes.length
+                ?
+
+                filteredRecipes.map(recipe => `
+
+                    <article class="recipe-card">
+
+                        <a href="#recipe/${recipe.id}">
+
+                            <div class="recipe-image">
+
+                                <img
+                                    src="${recipe.image}"
+                                    alt="${recipe.title}"
+                                >
+
+                            </div>
+
+
+                            <div class="recipe-content">
+
+                                <h3>
+                                    ${recipe.title}
+                                </h3>
+
+                                <span>
+                                    Xem công thức →
+                                </span>
+
+                            </div>
+
+                        </a>
+
+                    </article>
+
+                `).join("")
+
+                :
+
+                `
+                    <p style="
+                        grid-column:1/-1;
+                        font-family:Arial;
+                        color:#777;
+                    ">
+                        Không tìm thấy món ăn.
+                    </p>
+                `
+            }
+
+        </section>
+
+    `;
+
+
+    updateNavigation("category");
+}
+
+
+
+/* =========================================================
+   TRANG CHI TIẾT
+========================================================= */
+
+function renderRecipe(id) {
+
+    const recipe =
+        recipes.find(item => item.id === id)
+        || recipes[1];
+
+
+    document.getElementById("app").innerHTML = `
+
+        <!-- HEADER RECIPE -->
+
+        <section class="detail-header">
+
+            <div class="container detail-grid">
+
+
+                <div class="detail-image">
+
+                    <img
+                        src="${recipe.image}"
+                        alt="${recipe.title}"
+                    >
+
+                </div>
+
+
+                <div>
+
+
+                    <div class="breadcrumb">
+
+                        Trang chủ
+                        /
+                        Danh mục
+                        /
+                        Món ăn Việt Nam
+                        /
+                        ${recipe.title}
+
+                    </div>
+
+
+                    <h1 class="detail-title">
+
+                        ${recipe.title}
+
+                    </h1>
+
+
+                    <div class="comment-count">
+
+                        186 bình luận
+
+                    </div>
+
+
+                    <div class="recipe-meta">
+
+
+                        <div>
+
+                            <strong>
+                                ${recipe.time}
+                            </strong>
+
+                            <span>
+                                Tổng thời gian
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                ${recipe.people}
+                            </strong>
+
+                            <span>
+                                Khẩu phần
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Dễ
+                            </strong>
+
+                            <span>
+                                Độ khó
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <button
+                        class="share-btn"
+                        onclick="shareRecipe()"
+                    >
+
+                        Chia sẻ
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- RECIPE BODY -->
+
+        <section class="recipe-body">
+
+            <div class="container recipe-columns">
+
+
+                <!-- NGUYÊN LIỆU -->
+
+                <div>
+
+                    <h2>
+                        Nguyên liệu
+                    </h2>
+
+
+                    <ul class="ingredients">
+
+                        <li>
+                            600g Sườn thăn non
+                        </li>
+
+                        <li>
+                            2 củ Hành tím băm
+                        </li>
+
+                        <li>
+                            1 củ Tỏi khô băm
+                        </li>
+
+                        <li>
+                            3 thìa Giấm gạo sạch (45ml)
+                        </li>
+
+                        <li>
+                            2.5 thìa Đường
+                        </li>
+
+                        <li>
+                            2 thìa Nước mắm
+                        </li>
+
+                        <li>
+                            1 thìa Tương cà
+                        </li>
+
+                    </ul>
+
+
+                    <div class="tip">
+
+                        <strong>
+                            MẸO TỪ HƯƠNG VỊ NHÀ
+                        </strong>
+
+                        Không nên luộc sườn chín trước khi chiên
+                        vì sẽ làm mất vị ngọt tự nhiên của thịt.
+                        Cho thêm một thìa tương cà giúp nước sốt
+                        có màu cánh gián tự nhiên.
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CÁC BƯỚC -->
+
+                <div>
+
+                    <h2>
+                        CÁC BƯỚC THỰC HIỆN
+                    </h2>
+
+
+                    ${renderSteps()}
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- COMMENTS -->
+
+        <section class="comments">
+
+            <div class="container comments-grid">
+
+
+                <div>
+
+                    <h2>
+                        186 bình luận
+                    </h2>
+
+
+                    ${renderComments()}
+
+
+                    <button
+                        class="more-comment"
+                        onclick="alert('Đã tải thêm bình luận!')"
+                    >
+                        Tải thêm comment
+                    </button>
+
+                </div>
+
+
+
+                <!-- FORM -->
+
+                <form
+                    class="comment-form"
+                    onsubmit="submitComment(event)"
+                >
+
+                    <h3>
+                        Chia sẻ kinh nghiệm
+                    </h3>
+
+
+                    <p>
+                        Chia sẻ của bạn sẽ giúp ích
+                        cho những người vào bếp khác.
+                    </p>
+
+
+                    <label>
+                        Tên
+                    </label>
+
+
+                    <input
+                        id="commentName"
+                        placeholder="Tên của bạn"
+                        required
+                    >
+
+
+                    <label>
+                        Bình luận
+                    </label>
+
+
+                    <textarea
+                        id="commentText"
+                        placeholder="Cách làm nào hiệu quả?
+Có mẹo hoặc gợi ý thay thế gì không?"
+                        required
+                    ></textarea>
+
+
+                    <button type="submit">
+                        Đăng bình luận
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    `;
+
+
+    updateNavigation("category");
+}
+
+
+
+/* =========================================================
+   CÁC BƯỚC NẤU ĂN
+========================================================= */
+
+function renderSteps() {
+
+    const steps = [
+
+        [
+            "Sơ chế sườn",
+
+            `Sườn chặt khúc 3–4cm, rửa nước muối.
+            Chần qua nước sôi kèm gừng đập dập trong
+            2 phút để khử mùi. Ướp với hành tím,
+            tiêu xay và hành băm trong 15 phút.`
+        ],
+
+
+        [
+            "Pha nước sốt",
+
+            `Hòa tan hỗn hợp gồm 3 thìa giấm gạo
+            + 2.5 thìa đường + 2 thìa nước mắm
+            + 1 thìa tương cà + 4 thìa nước lọc
+            trong bát con.`
+        ],
+
+
+        [
+            "Rán sườn xém cạnh",
+
+            `Cho dầu vào chảo đun nóng vừa,
+            cho sườn vào áp chảo/rán nhanh đến
+            khi vàng đều hai mặt và hơi xém cạnh.`
+        ],
+
+
+        [
+            "Xào sườn & Trình bày",
+
+            `Phi thơm hành băm, trút nước sốt vào
+            đun sôi rồi cho sườn vào om 8–10 phút
+            cho ngấm sâu. Khi nước sốt cô lại
+            sánh dẻo thì rắc hành hoa và thưởng thức.`
+        ]
+
+    ];
+
+
+    return steps.map((step, index) => `
+
+        <div class="step">
+
+            <div class="step-number">
+                ${index + 1}
+            </div>
+
+            <div>
+
+                <h3>
+                    ${step[0]}
+                </h3>
+
+                <p>
+                    ${step[1]}
+                </p>
+
+            </div>
+
+        </div>
+
+    `).join("");
+
+}
+
+
+
+/* =========================================================
+   COMMENTS
+========================================================= */
+
+function renderComments() {
+
+    const comments = [
+
+        {
+            avatar: "JL",
+            name: "Vân Anh",
+            text: "Ngon. Làm theo công thức là được",
+            time: "1 tuần trước"
+        },
+
+
+        {
+            avatar: "AR",
+            name: "Hải",
+            text: "Đã thử và thấy ngon 👍",
+            time: "2 ngày trước"
+        },
+
+
+        {
+            avatar: "MS",
+            name: "Min",
+            text: "Mk không có sườn non nên lấy sườn bt vẫn cứ là ok",
+            time: "2 tuần trước"
+        },
+
+
+        {
+            avatar: "TN",
+            name: "Nguyễn",
+            text: "Nay trở lại vào bếp may gặp được web này",
+            time: "3 tuần trước"
+        }
+
+    ];
+
+
+    return comments.map(comment => `
+
+        <div class="comment">
+
+            <div class="avatar">
+                ${comment.avatar}
+            </div>
+
+
+            <div>
+
+                <strong>
+                    ${comment.name}
+                </strong>
+
+                <p>
+                    ${comment.text}
+                </p>
+
+            </div>
+
+
+            <time>
+                ${comment.time}
+            </time>
+
+        </div>
+
+    `).join("");
+
+}
+
+
+
+/* =========================================================
+   ROUTER
+========================================================= */
+
+function router() {
+
+    const hash = window.location.hash;
+
+
+    if (hash.startsWith("#recipe/")) {
+
+        const id = hash.replace("#recipe/", "");
+
+        renderRecipe(id);
+
+    }
+
+
+    else if (hash === "#category") {
+
+        renderCategory();
+
+    }
+
+
+    else {
+
+        renderHome();
+
+    }
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function updateNavigation(page) {
+
+    document
+        .getElementById("navHome")
+        .classList.remove("active");
+
+    document
+        .getElementById("navCategory")
+        .classList.remove("active");
+
+
+    if (page === "home") {
+
+        document
+            .getElementById("navHome")
+            .classList.add("active");
+
+    }
+
+
+    if (page === "category") {
+
+        document
+            .getElementById("navCategory")
+            .classList.add("active");
+
+    }
+
+}
+
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+function searchRecipe() {
+
+    const input =
+        document.getElementById("heroSearch");
+
+
+    const keyword =
+        input.value.trim();
+
+
+    window.location.hash = "#category";
+
+
+    setTimeout(() => {
+
+        renderCategory(keyword);
+
+    }, 50);
+
+}
+
+
+
+/* =========================================================
+   HEADER SEARCH
+========================================================= */
+
+document
+    .getElementById("headerSearch")
+    .addEventListener("keydown", function(event) {
+
+        if (event.key === "Enter") {
+
+            const keyword =
+                this.value.trim();
+
+
+            window.location.hash = "#category";
+
+
+            setTimeout(() => {
+
+                renderCategory(keyword);
+
+            }, 50);
+
+        }
+
+    });
+
+
+
+/* =========================================================
+   SHARE
+========================================================= */
+
+function shareRecipe() {
+
+    if (navigator.clipboard) {
+
+        navigator.clipboard
+            .writeText(window.location.href);
+
+        alert(
+            "Đã sao chép link công thức!"
+        );
+
+    }
+
+    else {
+
+        alert(
+            "Bạn có thể copy đường link trên trình duyệt."
+        );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   COMMENT
+========================================================= */
+
+function submitComment(event) {
+
+    event.preventDefault();
+
+
+    const name =
+        document.getElementById("commentName").value;
+
+
+    alert(
+        "Cảm ơn " +
+        name +
+        " đã chia sẻ kinh nghiệm!"
+    );
+
+
+    event.target.reset();
+
+}
+
+
+
+/* =========================================================
+   HASH CHANGE
+========================================================= */
+
+window.addEventListener(
+    "hashchange",
+    router
+);
+
+
+
+/* =========================================================
+   CHẠY WEBSITE
+========================================================= */
+
+router();
+
+</script>
+
+</body>
+</html>
